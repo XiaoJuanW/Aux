@@ -1,48 +1,27 @@
 <template>
-<!-- 系统列表 -->
-  <div>
-    <div class="table_container">
-      <table>
-        <thead>
-          <tr>
-            <th>系统编码</th>
-            <th>系统名称</th>
-            <th>事件</th>
-            <th>系统负责人</th>
-            <th>警告时间</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="(item, index) in list"
-            v-if="index < 3"
-          >
-            <td>{{item.code}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.event}}</td>
-            <td>{{item.charge}}</td>
-            <td>{{item.time}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <!-- 系统列表 -->
+  <div class="table_container">
+    <table>
+      <thead>
+        <tr>
+          <th>系统编码</th>
+          <th>系统名称</th>
+          <th>事件</th>
+          <th>系统负责人</th>
+          <th>警告时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in list">
+          <td>{{item.code}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.event}}</td>
+          <td>{{item.charge}}</td>
+          <td>{{item.time}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <!-- <div class="index_content"></div>
-      <div class="text"></div>
-      <div class="text"></div>
-      <div class="text"></div>
-      <div class="text"></div> -->
-
-  <!-- <div
-      class="list_container"
-      v-for="(item, index) in list"
-    >
-      <div class="">{{item.code}}</div>
-      <div class="text">{{item.name}}</div>
-      <div class="text">{{item.event}}</div>
-      <div class="text">{{item.charge}}</div>
-      <div class="text">{{item.time}}</div>
-    </div> -->
 </template>
 <script>
 export default {
@@ -56,51 +35,55 @@ export default {
           event: "系统统载",
           charge: "张三",
           time: "20190122"
-        },
-        {
+        }, {
           code: "002",
-          name: "OA",
+          name: "MS",
           event: "系统统载",
           charge: "李四",
-          time: "20190122"
-        },
-        {
+          time: "20190123"
+        }, {
           code: "003",
-          name: "OA",
+          name: "AB",
           event: "系统统载",
           charge: "王二",
-          time: "20190122"
-        },
-        {
+          time: "20190124"
+        }, {
           code: "004",
-          name: "OA",
+          name: "OPS",
           event: "系统统载",
           charge: "张三",
-          time: "20190122"
-        },
-        {
+          time: "20190125"
+        }, {
           code: "005",
-          name: "OA",
+          name: "LAS",
           event: "系统统载",
           charge: "张三",
-          time: "20190122"
-        },
-        {
+          time: "20190126"
+        }, {
           code: "006",
-          name: "OA",
+          name: "MMS",
           event: "系统统载",
           charge: "张三",
-          time: "20190122"
+          time: "20190127"
         }
       ]
     };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      let height = $(this.$el).find('tbody').children(':first')[0].offsetHeight;
+      this.timer = setInterval(() => {
+        $(this.$el).find('tbody').animate({
+          marginTop: '-' + height + 'px'
+        }, 1000, function () {
+          $(this).css({ marginTop: "0" }).find(":first").appendTo(this);
+        });
+      }, 2500);
+    });
   }
 };
 </script>
 <style lang="stylus">
-.table_container {
-}
-
 table {
   margin: 20px auto;
   width: 90%;
@@ -112,9 +95,8 @@ th, td {
   line-height: 30px;
   font-size: 15px;
   color: rgb(140, 230, 74);
-  text-align left ;
+  text-align: left;
 }
-
 </style>
 
 

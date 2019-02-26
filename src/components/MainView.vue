@@ -106,7 +106,7 @@ export default {
     .system-distribution-map-wrapper {
       position: absolute;
       top: 0;
-      bottom: 150px;
+      bottom: 145px;
       width: 100%;
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
       box-sizing: border-box;
@@ -115,8 +115,9 @@ export default {
     .system-list-wrapper {
       position: absolute;
       bottom: 0;
-      height: 150px;
+      height: 145px;
       width: 100%;
+      overflow: hidden;
     }
   }
 
