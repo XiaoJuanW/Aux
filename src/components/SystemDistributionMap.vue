@@ -27,7 +27,6 @@
 <script>
 export default {
   name: "SystemDistributionMap",
-  methods: {},
   mounted() {
     let x, y, toX, toY, lineColor;
     let html = "";
@@ -67,22 +66,22 @@ export default {
 
   },
   methods: {
-    // linkLine(fromEle, toEle, isTop) {
-    //   let x, y, toX, toY;
-    //   let html = "";
-    //   $(fromEle).children().each(function (index, ele) {
-    //     x = ele.offsetLeft + ele.clientWidth / 2, y = ele.offsetTop + (isTop ? ele.clientHeight : 0);
-    //     $(toEle).children().each(function (index, ele) {
-    //       toX = ele.offsetLeft + ele.clientWidth / 2, toY = ele.offsetTop + ele.clientHeight / 2;
-    //     });
-    //     html += '<div class="svg_block">';
-    //     html += '<svg class="svg_line" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">';
-    //     html += '<path class="path" stroke="#ffffff4d" stroke-width="1" d="M ' + x + ' ' + y + ' ' + toX + ' ' + toY + '" />';
-    //     html += "</svg>";
-    //     html += "</div>";
-    //   });
-    //   return html;
-    // }
+    linkLine(fromEle, toEle, isTop) {
+      let x, y, toX, toY;
+      let html = "";
+      $(fromEle).children().each(function (index, ele) {
+        x = ele.offsetLeft + ele.clientWidth / 2, y = ele.offsetTop + (isTop ? ele.clientHeight : 0);
+        $(toEle).children().each(function (index, ele) {
+          toX = ele.offsetLeft + ele.clientWidth / 2, toY = ele.offsetTop + ele.clientHeight / 2;
+        });
+        html += '<div class="svg_block">';
+        html += '<svg class="svg_line" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">';
+        html += '<path class="path" stroke="#ffffff4d" stroke-width="1" d="M ' + x + ' ' + y + ' ' + toX + ' ' + toY + '" />';
+        html += "</svg>";
+        html += "</div>";
+      });
+      return html;
+    }
   },
   data() {
     return {

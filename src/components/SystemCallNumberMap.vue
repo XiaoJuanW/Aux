@@ -1,32 +1,31 @@
 <template>
-  <div id="echart"></div>
+  <div id="system-call-number"></div>
 </template>
 <script>
 import echarts from "echarts";
 export default {
-  name: "DisplayMap",
+  name: "SystemCallNumberMap",
   mounted() {
-    let myChart = echarts.init(document.getElementById("echart"));
+    let myChart = echarts.init(document.getElementById("system-call-number"));
     let option = {
       textStyle: {
-        color: "#3b6ade"
+        color: "#fff"
       },
       title: {
-        text: " ",
+        text: "各系统调用次数",
         textStyle: {
-          color: "#3b6ade"
+          color: "#fff"
         }
       },
       tooltip: {
         trigger: "axis"
       },
-      legend: {
-        // bottom: 10,
-        data: ["服务调用总数", "传输成功总数", "传输失败总数"],
-        textStyle: {
-          color: "#fff"
-        }
-      },
+      // legend: {
+      //   data: ["服务调用总数", "传输成功总数", "传输失败总数"],
+      //   textStyle: {
+      //     color: "#fff"
+      //   }
+      // },
       grid: {
         left: "3%",
         right: "4%",
@@ -35,7 +34,7 @@ export default {
       },
       toolbox: {
         feature: {
-          saveAsImage: {}
+          // saveAsImage: {}
         }
       },
       xAxis: {
@@ -44,22 +43,16 @@ export default {
         data: ["1点", "2点", "3点", "4点", "5点", "6点", "7点"],
         axisLine: {
           lineStyle: {
-            color: "#3b6ade" // 颜色
+            color: "#fff" // 颜色
             //width: 2 // 粗细
           }
-        },
-        // splitLine: {
-        //   lineStyle: {
-        //     // 使用深浅的间隔色
-        //     color: ['#aaa', '#ddd']
-        //   }
-        // }
+        }
       },
       yAxis: {
         type: "value",
         axisLine: {
           lineStyle: {
-            color: "#3b6ade" // 颜色
+            color: "#fff" // 颜色
             //width: 2 // 粗细
           }
         }
@@ -69,6 +62,7 @@ export default {
           name: "服务调用总数",
           type: "line",
           stack: "总量",
+          smooth: true,  // 曲线
           data: [120, 132, 101, 134, 90, 230, 210]
         },
         {
@@ -89,17 +83,17 @@ export default {
     myChart.setOption(option);
 
     //建议加上以下这一行代码，不加的效果图如下（当浏览器窗口缩小的时候）。超过了div的界限（红色边框）
-    window.addEventListener("resize", function () {
+    window.addEventListener("resize", function() {
       myChart.resize();
     });
   },
   methods: {},
   watch: {},
-  created() { }
+  created() {}
 };
 </script>
 <style lang="stylus">
-#echart {
+#system-call-number {
   width: 100%;
   height: 100%;
 }

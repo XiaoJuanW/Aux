@@ -1,34 +1,51 @@
 <template>
   <div class="main_container">
     <div class="top_nav">
-      <div class="nav_icon">AUX 奥克斯</div>
-      <div class="nav_title">AUX系统地图</div>
-      <div class="nav_day">已监控多少天：98天</div>
+      <div class="nav_left">
+        <span class="nav_left_letter">AUX 奥克斯</span>
+      </div>
+      <div class="nav_center">
+        <div class="nav_center_title">AUX系统地图</div>
+        <span class="nav_center_date">2019年2月23日 星期三</span>
+        <span class="nav_center_time">04:04:34</span>
+      </div>
+      <div class="nav_right">
+        <div class="nav_right_days">已监控多少天：98天</div>
+      </div>
     </div>
-    <div class="left_container">
-      <div class="system-distribution-map-wrapper">
-        <system-dsitribution-map></system-dsitribution-map>
+    <div class="main_content">
+      <div class="main_content_left">
+        <div class="block_bg pruduct_sell"></div>
+        <div class="block_bg normal_log">
+          <log-list></log-list>
+        </div>
+        <div class="systematic_health"></div>
       </div>
-      <div class="system-list-wrapper">
-        <system-list></system-list>
+      <div class="main_content_center">
+        <div class="system_distribution_title"></div>
+        <div class="system_distribution_map">
+          <system-distribution-map></system-distribution-map>
+        </div>
+        <div class="system_call_number">
+          <system-call-number-map></system-call-number-map>
+        </div>
       </div>
-    </div>
-    <div class="right_container">
-      <div class="log-list-wrapper">
-        <log-list></log-list>
-      </div>
-      <div class="display-map-wrapper">
-        <display-map></display-map>
-      </div>
-      <div class="log-list-wrapper">
-        <log-list></log-list>
+      <div class="main_content_right">
+        <div class="block_bg grow_for">
+          <display-map></display-map>
+        </div>
+        <div class="block_bg order_stat"></div>
+        <div class="block_bg error_log">
+          <log-list></log-list>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SystemDsitributionMap from "@/components/SystemDistributionMap.vue";
+import SystemDistributionMap from "@/components/SystemDistributionMap.vue";
+import SystemCallNumberMap from "@/components/SystemCallNumberMap.vue";
 import SystemList from "@/components/SystemList.vue";
 import LogList from "@/components/LogList.vue";
 import DisplayMap from "@/components/DisplayMap.vue";
@@ -36,7 +53,8 @@ import DisplayMap from "@/components/DisplayMap.vue";
 export default {
   name: "Mainview",
   components: {
-    SystemDsitributionMap,
+    SystemDistributionMap,
+    SystemCallNumberMap,
     SystemList,
     LogList,
     DisplayMap
@@ -57,9 +75,10 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(8, 32, 65);
+  background: url('../img/bg.jpg');
+  background-size: 100% 100%;
   box-sizing: border-box;
-  padding: 50px 20px 20px 20px;
+  padding: 60px 20px 0 20px;
   display: flex;
   color: white;
 
@@ -69,76 +88,116 @@ export default {
     left: 20px;
     right: 20px;
     top: 0;
-    height: 50px;
+    height: 60px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
-    .nav_icon {
+    .nav_left {
       width: 25%;
-      line-height: 50px;
-      font-size: large;
-      font-weight: bolder;
       text-align: left;
-      color: rgba(255, 255, 255, 0.7);
-      text-shadow: 5px 5px 5px #000000;
+
+      .nav_left_letter {
+        line-height: 60px;
+        font-size: 30px;
+        font-weight: 800;
+      }
     }
 
-    .nav_title {
+    .nav_center {
       width: 50%;
-      line-height: 50px;
-      font-size: xx-large;
-      color: rgba(255, 255, 255, 0.8);
+
+      .nav_center_title {
+        font-size: 25px;
+        margin: 9px auto;
+      }
+
+      .nav_center_time {
+        color: rgb(232, 102, 43);
+      }
     }
 
-    .nav_day {
+    .nav_right {
+      position: relative;
       width: 25%;
-      line-height: 50px;
       text-align: right;
-      color: rgb(248, 204, 70);
+
+      .nav_right_days {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        color: rgb(232, 102, 43);
+      }
     }
   }
 
-  .left_container {
-    position: relative;
-    width: 70%;
+  .main_content {
+    display: flex;
+    width: 100%;
     height: 100%;
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
 
-    .system-distribution-map-wrapper {
-      position: absolute;
-      top: 0;
-      bottom: 145px;
-      width: 100%;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-      box-sizing: border-box;
+    .main_content_left {
+      width: 30%;
+      height: 100%;
+
+      .pruduct_sell {
+        height: 40%;
+      }
+
+      .normal_log {
+        height: 30%;
+      }
+
+      .systematic_health {
+        width: 100%;
+        height: 30%;
+      }
     }
 
-    .system-list-wrapper {
-      position: absolute;
-      bottom: 0;
-      height: 145px;
-      width: 100%;
-      overflow: hidden;
+    .main_content_center {
+      width: 40%;
+      height: 100%;
+
+      .system_distribution_title {
+        width: 100%;
+        height: 10%;
+      }
+
+      .system_distribution_map {
+        width: 100%;
+        height: 60%;
+      }
+
+      .system_call_number {
+        width: 100%;
+        height: 30%;
+      }
+    }
+
+    .main_content_right {
+      width: 30%;
+      height: 100%;
+
+      .grow_for {
+        height: 40%;
+      }
+
+      .order_stat {
+        height: 30%;
+      }
+
+      .error_log {
+        height: 30%;
+      }
     }
   }
+}
 
-  .right_container {
-    width: 30%;
-    height: 100%;
-    padding-left: 15px;
-
-    .log-list-wrapper {
-      width: 100%;
-      height: 25%;
-      margin: 20px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .display-map-wrapper {
-      width: 100%;
-      height: 40%;
-      margin: 20px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    }
-  }
+.block_bg {
+  width: 100%;
+  background-image: url('../img/formBg.png');
+  background-size: 100% calc(100% - 20px);
+  background-position: 0 10px;
+  background-repeat: no-repeat;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 </style>
