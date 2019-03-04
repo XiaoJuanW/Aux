@@ -19,10 +19,14 @@
         <div class="block_bg normal_log">
           <log-list></log-list>
         </div>
-        <div class="systematic_health"></div>
+        <div class="systematic_health">
+          <system-health></system-health>
+        </div>
       </div>
       <div class="main_content_center">
-        <div class="system_distribution_title"></div>
+        <div class="system_distribution_title">
+
+        </div>
         <div class="system_distribution_map">
           <system-distribution-map></system-distribution-map>
         </div>
@@ -46,6 +50,7 @@
 <script>
 import SystemDistributionMap from "@/components/SystemDistributionMap.vue";
 import SystemCallNumberMap from "@/components/SystemCallNumberMap.vue";
+import SystemHealth from "@/components/SystemHealth.vue";
 import SystemList from "@/components/SystemList.vue";
 import LogList from "@/components/LogList.vue";
 import DisplayMap from "@/components/DisplayMap.vue";
@@ -55,6 +60,7 @@ export default {
   components: {
     SystemDistributionMap,
     SystemCallNumberMap,
+    SystemHealth,
     SystemList,
     LogList,
     DisplayMap

@@ -8,34 +8,31 @@ export default {
   mounted() {
     let myChart = echarts.init(document.getElementById("echart"));
     let option = {
-      textStyle: {
-        color: "#3b6ade"
-      },
       title: {
-        text: " ",
+        text: '数据传输分析',
+        subtext: 'grow for',
+        left: 'right',
         textStyle: {
-          color: "#3b6ade"
+          color: '#ddd',
+          fontSize: 14
+        },
+        subtextStyle: {
+          color: '#998e00'
         }
       },
       tooltip: {
         trigger: "axis"
       },
       legend: {
-        // bottom: 10,
+        bottom: 0,
         data: ["服务调用总数", "传输成功总数", "传输失败总数"],
         textStyle: {
           color: "#fff"
         }
       },
-      grid: {
-        left: "3%",
-        right: "4%",
-        bottom: "3%",
-        containLabel: true
-      },
       toolbox: {
         feature: {
-          saveAsImage: {}
+          // saveAsImage: {}
         }
       },
       xAxis: {
@@ -62,7 +59,10 @@ export default {
             color: "#3b6ade" // 颜色
             //width: 2 // 粗细
           }
-        }
+        },
+        splitLine: {
+          show: false  // 不显示水平分割线
+        },
       },
       series: [
         {

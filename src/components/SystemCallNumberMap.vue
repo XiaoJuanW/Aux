@@ -8,74 +8,111 @@ export default {
   mounted() {
     let myChart = echarts.init(document.getElementById("system-call-number"));
     let option = {
-      textStyle: {
-        color: "#fff"
-      },
       title: {
-        text: "各系统调用次数",
+        text: '各系统调用次数',
+        left: 'right',
         textStyle: {
-          color: "#fff"
-        }
+          color: '#ddd',
+          fontSize: 14
+        },
+      },
+      textStyle: {
+        color: "#3b6ade"
       },
       tooltip: {
-        trigger: "axis"
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          crossStyle: {
+            color: '#999'
+          }
+        }
       },
       // legend: {
-      //   data: ["服务调用总数", "传输成功总数", "传输失败总数"],
+      //   data: ['调用次数', '异常比'],
       //   textStyle: {
       //     color: "#fff"
       //   }
       // },
-      grid: {
-        left: "3%",
-        right: "4%",
-        bottom: "3%",
-        containLabel: true
-      },
-      toolbox: {
-        feature: {
-          // saveAsImage: {}
+      xAxis: [
+        {
+          type: 'category',
+          data: ['a系统', 'b系统', 'c系统', 'd系统', 'd系统', 'e系统', 'f系统', 'g系统', 'h系统', 'i系统', 'j系统', 'k系统'],
+          axisPointer: {
+            type: 'shadow'
+          },
+          axisLine: {
+            lineStyle: {
+              color: "#3b6ade"
+            }
+          },
         }
-      },
-      xAxis: {
-        type: "category",
-        boundaryGap: false,
-        data: ["1点", "2点", "3点", "4点", "5点", "6点", "7点"],
-        axisLine: {
-          lineStyle: {
-            color: "#fff" // 颜色
-            //width: 2 // 粗细
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          name: '次数',
+          min: 0,
+          max: 500,
+          interval: 100,
+          axisLine: {
+            lineStyle: {
+              color: "#3b6ade"
+            }
+          },
+          splitLine: {
+            show: false  // 不显示水平分割线
+          },
+        },
+        {
+          type: 'value',
+          name: '异常比',
+          min: 0,
+          max: 25,
+          interval: 5,
+          axisLine: {
+            lineStyle: {
+              color: "#3b6ade"
+            }
+          },
+          splitLine: {
+            show: false  // 不显示水平分割线
+          },
+          axisLabel: {
+            formatter: '{value} %'
           }
         }
-      },
-      yAxis: {
-        type: "value",
-        axisLine: {
-          lineStyle: {
-            color: "#fff" // 颜色
-            //width: 2 // 粗细
-          }
-        }
-      },
+      ],
       series: [
         {
-          name: "服务调用总数",
-          type: "line",
-          stack: "总量",
-          smooth: true,  // 曲线
-          data: [120, 132, 101, 134, 90, 230, 210]
+          name: '调用次数',
+          type: 'bar',
+          itemStyle: {
+            normal: {
+              color: function (params) {
+                var colorList = [
+                  '#084280'
+                ];
+                return colorList[params.dataIndex]
+              }
+            }
+          },
+          data: [220, 490, 400, 232, 256, 367, 135, 162, 326, 200, 64, 33]
         },
         {
-          name: "传输成功总数",
-          type: "line",
-          stack: "总量",
-          data: [220, 182, 191, 234, 290, 330, 310]
-        },
-        {
-          name: "传输失败总数",
-          type: "line",
-          stack: "总量",
-          data: [150, 232, 201, 154, 190, 330, 410]
+          name: '异常比',
+          type: 'line',
+          yAxisIndex: 1,
+          smooth: true,
+          itemStyle: {
+            normal: {
+              color: "#e8662b",
+              lineStyle: {
+                color: '#e8662b'
+              }
+            }
+          },
+          data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
         }
       ]
     };
@@ -83,13 +120,13 @@ export default {
     myChart.setOption(option);
 
     //建议加上以下这一行代码，不加的效果图如下（当浏览器窗口缩小的时候）。超过了div的界限（红色边框）
-    window.addEventListener("resize", function() {
+    window.addEventListener("resize", function () {
       myChart.resize();
     });
   },
   methods: {},
   watch: {},
-  created() {}
+  created() { }
 };
 </script>
 <style lang="stylus">
