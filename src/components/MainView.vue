@@ -17,7 +17,7 @@
       <div class="main_content_left">
         <div class="block_bg pruduct_sell"></div>
         <div class="block_bg normal_log">
-          <log-list></log-list>
+          <log-list :title="normalTitle" :subtitle="normalSubtitle"></log-list>
         </div>
         <div class="systematic_health">
           <system-health></system-health>
@@ -40,7 +40,7 @@
         </div>
         <div class="block_bg order_stat"></div>
         <div class="block_bg error_log">
-          <log-list></log-list>
+          <log-list :title="errorTitle" :subtitle="errorSubtitle"></log-list>
         </div>
       </div>
     </div>
@@ -68,7 +68,12 @@ export default {
   methods: {},
   created() { },
   data() {
-    return {};
+    return {
+      normalTitle: '正常日志',
+      normalSubtitle: 'normal log',
+      errorTitle: '错误日志',
+      errorSubtitle: 'error log',
+    };
   }
 };
 </script>
@@ -203,7 +208,7 @@ export default {
   background-size: 100% calc(100% - 20px);
   background-position: 0 10px;
   background-repeat: no-repeat;
-  padding: 20px 0;
+  padding: 20px 5px;
   box-sizing: border-box;
 }
 </style>

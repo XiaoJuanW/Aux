@@ -1,10 +1,17 @@
 <template>
   <!-- 日志 -->
-  <div class="log_wrapper">
-    <div class="log_container">
-      <div class="log_content" v-for="(item, index) in list">
-        <div class="index_content">{{index + 1}}</div>
-        <div class="text">{{item}}</div>
+  <div class="log_box">
+    <div>{{title}}</div>
+    <div>{{subtitle}}</div>
+    <div class="log_wrapper">
+      <div class="log_container">
+        <div class="log_content" v-for="(item, index) in list">
+          <div class="index_content">{{index + 1}}</div>
+          <div class="log_wrap">
+            <span class="time">{{item.time}}</span>
+            <div class="log">{{item.log}}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -12,23 +19,34 @@
 <script>
 export default {
   name: "LogList",
+  props: {
+    title: {
+      type: String,
+    },
+    subtitle: {
+      type: String,
+    },
+    logColor: {
+      type: String,
+    }
+  },
   data() {
     return {
       timer: null, // 定时器
       list: [
-        "日志信息1日志信息1日志信息1日志信息1日志信息1日志信息1日志信息1日志信息1日志信息1",
-        "日志信息2日志信息2日志信息2",
-        "日志信息3日志信息3日志信息3",
-        "日志信息4日志信息4日志信息4",
-        "日志信息5日志信息5日志信息5",
-        "日志信息2日志信息2日志信息2",
-        "日志信息3日志信息3日志信息3",
-        "日志信息4日志信息4日志信息4",
-        "日志信息5日志信息5日志信息5",
-        "日志信息2日志信息2日志信息2",
-        "日志信息3日志信息3日志信息3",
-        "日志信息4日志信息4日志信息4",
-        "日志信息5日志信息5日志信息5"
+        { time: '10.01', log: "日志信息1日志信息1日志信息1日志}信息1日志信息1日志信息1日志信息1日志信息1日志信息1" },
+        { time: '10.02', log: "日志信息2日志信息2日志信息2日志信息2日志信息2日志信息2日志信息2日志信息2日志信息2" },
+        { time: '10.03', log: "日志信息3日志信息3日志信息3日志信息3日志信息3日志信息3日志信息3日志信息3日志信息3" },
+        { time: '11.04', log: "日志信息4日志信息4日志信息4日志信息3日志信息3日志信息3日志信息3日志信息3日志信息3" },
+        { time: '11.05', log: "日志信息5日志信息5日志信息5日志信息3日志信息3日志信息3" },
+        { time: '15.06', log: "日志信息2日志信息2日志信息2日志信息3日志信息3日志信息3" },
+        { time: '15.07', log: "日志信息3日志信息3日志信息3日志信息3日志信息3日志信息3" },
+        { time: '15.08', log: "日志信息4日志信息4日志信息4日志信息3日志信息3日志信息3" },
+        { time: '16.09', log: "日志信息5日志信息5日志信息5日志信息3日志信息3日志信息3" },
+        { time: '17.10', log: "日志信息2日志信息2日志信息2日志信息3日志信息3日志信息3" },
+        { time: '18.11', log: "日志信息3日志信息3日志信息3日志信息3日志信息3日志信息3" },
+        { time: '19.12', log: "日志信息4日志信息4日志信息4日志信息3日志信息3日志信息3" },
+        { time: '19.13', log: "日志信息5日志信息5日志信息5日志信息3日志信息3日志信息3" }
       ]
     };
   },
@@ -53,37 +71,55 @@ export default {
 };
 </script>
 <style scope lang="stylus">
-.log_wrapper {
+.log_box {
   width: 100%;
   height: 100%;
-  overflow-y: hidden;
+  overflow: hidden;
 
-  .log_content {
-    position: relative;
-    display: flex;
-    padding-bottom: 5px;
+  .log_wrapper {
+    width: 100%;
+    height: calc(100% - 32px);
+    overflow-y: hidden;
 
-    .index_content {
-      width: 22px;
-      height: 22px;
-      line-height: 22px;
-      border-radius: 11px;
-      background-color: rgb(110, 208, 205);
-      font-size: 10px;
-    }
+    .log_container {
+      overflow-y: hidden;
 
-    .text {
-      margin-left: 5px;
-      width: calc(100% - 30px);
-      height: 22px;
-      line-height: 22px;
-      text-align: left;
-      background-color: rgba(20, 59, 102, 0.5);
-      color: rgb(169, 125, 49);
-      font-size: 10px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
+      .log_content {
+        position: relative;
+        display: flex;
+        padding-bottom: 3px;
+
+        .index_content {
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          border-radius: 5px;
+          background-color: rgb(110, 208, 205);
+          font-size: 10px;
+          margin: auto;
+        }
+
+        .log_wrap {
+          margin-left: 5px;
+          width: calc(100% - 30px);
+          text-align: left;
+
+          .time {
+            font-size: 10px;
+            color: #ddd;
+            text-align: left;
+          }
+
+          .log {
+            width: calc(100% - 30px);
+            color: rgb(169, 125, 49);
+            font-size: 12px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+      }
     }
   }
 }
