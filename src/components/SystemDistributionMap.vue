@@ -1,13 +1,24 @@
 <template>
   <!-- 系统分块图 -->
   <div class="distribution_map_container">
+    <div class="title_box">
+      <div class="all_num">1941411</div>
+      <div class="title_box">
+        <div class="title">业务系统图</div>
+        <div class="subtitle">product pic</div>
+      </div>
+    </div>
     <div class="distribution_map_content">
       <div class="top_wrapper">
         <div v-for="(item, index) in top" :class="(item.status == -1) ? 'service_block error': 'service_block'">
-          <div class="title">{{item.sys}}</div>
-          <div class="name">{{item.name}}</div>
-          <div :class="(item.status == 1) ? 'normal_light' : (item.status == -1 ? 'abnormal_light' : 'sys_light')">
+          <div class="title">
+            <span class="title_sys">{{item.sys}}</span>
+            <span class="title_num">{{item.num}}</span>
           </div>
+          <div class="name">
+            <div class="title_name"> {{item.name}} </div>
+          </div>
+          <!-- <div :class="(item.status == 1) ? 'normal_light' : (item.status == -1 ? 'abnormal_light' : 'sys_light')"></div> -->
         </div>
       </div>
       <div class="esb_container">
@@ -15,10 +26,14 @@
       </div>
       <div class="bottom_wrapper">
         <div v-for="(item, index) in bottom" :class="(item.status == -1) ? 'service_block error': 'service_block'">
-          <div class="title">{{item.sys}}</div>
-          <div class="name">{{item.name}}</div>
-          <div :class="(item.status == 1) ? 'normal_light' : (item.status == -1 ? 'abnormal_light' : 'sys_light')">
+          <div class="title">
+            <span class="title_sys">{{item.sys}}</span>
+            <span class="title_num">{{item.num}}</span>
           </div>
+          <div class="name">
+            <div class="title_name"> {{item.name}} </div>
+          </div>
+          <!-- <div :class="(item.status == 1) ? 'normal_light' : (item.status == -1 ? 'abnormal_light' : 'sys_light')"></div> -->
         </div>
       </div>
     </div>
@@ -38,7 +53,7 @@ export default {
       });
       html += '<div class="svg_block" >';
       html += '<svg class="svg_line" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">';
-      html += '<path class="path" stroke="' + lineColor + '" stroke-width="1" d="M ' + x + ' ' + y + ' ' + x + ' ' + toY + '" />';
+      html += '<path class="path" stroke="' + lineColor + '" stroke-width="3" d="M ' + x + ' ' + y + ' ' + x + ' ' + toY + '" />';
       html += "</svg>";
       html += "</div>";
     });
@@ -56,7 +71,7 @@ export default {
       });
       html2 += '<div class="svg_block">';
       html2 += '<svg class="svg_line" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">';
-      html2 += '<path class="path" stroke="' + lineColor2 + '" stroke-width="1" d="M ' + x2 + ' ' + y2 + ' ' + x2 + ' ' + toY2 + '" />';
+      html2 += '<path class="path" stroke="' + lineColor2 + '" stroke-width="3" d="M ' + x2 + ' ' + y2 + ' ' + x2 + ' ' + toY2 + '" />';
       html2 += "</svg>";
       html2 += "</div>";
     });
@@ -85,18 +100,18 @@ export default {
   },
   data() {
     return {
-      top: [{ sys: '集团', name: 'OA', status: 1 },  // status 1正常  -1异常  0系统 
-      { sys: '集团', name: 'MDM', status: -1 },
-      { sys: '集团', name: 'FSSC', status: 0 },
-      { sys: '集团', name: 'HR', status: -1 },
-      { sys: '电力', name: 'FIS', status: 1 },
-      { sys: '电力', name: 'PLM', status: 1 }],
-      bottom: [{ sys: '家电', name: 'PDM', status: -1 },
-      { sys: '家电', name: 'OMS', status: 1 },
-      { sys: '家电', name: 'IMS', status: 1 },
-      { sys: '家电', name: 'SRM', status: 0 },
-      { sys: '家电', name: 'SAP', status: -1 },
-      { sys: '医疗', name: 'HIS', status: -1 }]
+      top: [{ sys: '集团', num: 12, name: 'OA', status: 1 },  // status 1正常  -1异常  0系统 
+      { sys: '集团', num: 1, name: 'MDM', status: -1 },
+      { sys: '集团', num: 4, name: 'FSSC', status: 0 },
+      { sys: '集团', num: 2, name: 'HR', status: -1 },
+      { sys: '电力', num: 6, name: 'FIS', status: 1 },
+      { sys: '电力', num: 9, name: 'PLM', status: 1 }],
+      bottom: [{ sys: '家电', num: 14, name: 'PDM', status: -1 },
+      { sys: '家电', num: 11, name: 'OMS', status: 1 },
+      { sys: '家电', num: 10, name: 'IMS', status: 1 },
+      { sys: '家电', num: 9, name: 'SRM', status: 0 },
+      { sys: '家电', num: 2, name: 'SAP', status: -1 },
+      { sys: '医疗', num: 2, name: 'HIS', status: -1 }]
     };
   }
 };
@@ -108,75 +123,96 @@ export default {
   height: 100%;
   box-sizing: border-box;
 
+  .title_box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+
+    .all_num {
+      font-size: 40px;
+      font-weight: 900;
+      color: rgb(232, 102, 43);
+    }
+
+    .title_box {
+      position: absolute;
+      top: 5px;
+      right: 0;
+      text-align: right;
+
+      .title {
+        font-size: 14px;
+        color: #ddd;
+      }
+
+      .subtitle {
+        font-size: 12px;
+        color: #998e00;
+      }
+    }
+  }
+
   .distribution_map_content {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px);
 
     .top_wrapper, .bottom_wrapper {
       display: flex;
-      height: 20%;
+      height: 60px;
 
       .service_block {
         position: relative;
         flex: 1;
         height: 100%;
-        margin: 0 8px;
-        box-sizing: border-box;
-        background-color: rgb(19, 55, 106);
+        margin: 0 2px;
+        padding: 3px;
+        background-color: rgba(33, 97, 241, 0.4);
 
         .title {
-          height: 30%;
+          display: flex;
+          height: 40%;
           font-size: 10px;
-          margin: 10px;
+          box-sizing: border-box;
           border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+          .title_sys {
+            height: 15px;
+            line-height: 15px;
+            margin: auto;
+            width: 70%;
+            text-align: left;
+          }
+
+          .title_num {
+            height: 15px;
+            line-height: 15px;
+            margin: auto;
+            width: 30%;
+            text-align: right;
+          }
         }
 
         .name {
-          height: 70%;
-        }
+          display: flex;
+          height: 60%;
 
-        .normal_light {
-          position: absolute;
-          top: -5px;
-          right: -5px;
-          width: 20px;
-          height: 20px;
-          border-radius: 10px;
-          background: url('../img/normal_light.jpg');
-          background-size: 100% 100%;
-        }
-
-        .abnormal_light {
-          position: absolute;
-          top: -5px;
-          right: -5px;
-          width: 20px;
-          height: 20px;
-          border-radius: 10px;
-          background: url('../img/abnormal_light.jpg');
-          background-size: 100% 100%;
-        }
-
-        .sys_light {
-          position: absolute;
-          top: -5px;
-          right: -5px;
-          width: 20px;
-          height: 20px;
-          border-radius: 10px;
-          background: url('../img/sys_light.jpg');
-          background-size: 100% 100%;
+          .title_name {
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            margin: auto;
+          }
         }
       }
 
       .error {
-        background-color: #80808080;
+        background-color: rgba(128, 128, 128, 0.4);
       }
     }
 
     .esb_container {
       display: flex;
-      height: 60%;
+      height: calc(100% - 120px); // 容器高度 - top_wrapper - bottom_wrapper
 
       .esb {
         width: 100%;

@@ -51,7 +51,7 @@ export default {
       yAxis: [
         {
           type: 'value',
-          name: '次数',
+          name: '总数',
           min: 0,
           max: 500,
           interval: 100,
@@ -66,7 +66,7 @@ export default {
         },
         {
           type: 'value',
-          name: '异常比',
+          name: '异常',
           min: 0,
           max: 25,
           interval: 5,
@@ -79,13 +79,13 @@ export default {
             show: false  // 不显示水平分割线
           },
           axisLabel: {
-            formatter: '{value} %'
+            // formatter: '{value} %'
           }
         }
       ],
       series: [
         {
-          name: '调用次数',
+          name: '调用总次数',
           type: 'bar',
           itemStyle: {
             normal: {
@@ -100,7 +100,7 @@ export default {
           data: [220, 490, 400, 232, 256, 367, 135, 162, 326, 200, 64, 33]
         },
         {
-          name: '异常比',
+          name: '异常次数',
           type: 'line',
           yAxisIndex: 1,
           smooth: true,

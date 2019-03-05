@@ -25,7 +25,7 @@ export default {
       },
       legend: {
         bottom: 0,
-        data: ["服务调用总数", "传输成功总数", "传输失败总数"],
+        data: ["并发流量", "实时流量"],
         textStyle: {
           color: "#fff"
         }
@@ -76,12 +76,6 @@ export default {
           type: "line",
           stack: "总量",
           data: [220, 182, 191, 234, 290, 330, 310]
-        },
-        {
-          name: "传输失败总数",
-          type: "line",
-          stack: "总量",
-          data: [150, 232, 201, 154, 190, 330, 410]
         }
       ]
     };

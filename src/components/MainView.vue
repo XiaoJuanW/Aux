@@ -15,7 +15,9 @@
     </div>
     <div class="main_content">
       <div class="main_content_left">
-        <div class="block_bg pruduct_sell"></div>
+        <div class="block_bg pruduct_sell">
+          <product-sell></product-sell>
+        </div>
         <div class="block_bg normal_log">
           <log-list :error="false" :title="normalTitle" :subtitle="normalSubtitle"></log-list>
         </div>
@@ -24,9 +26,6 @@
         </div>
       </div>
       <div class="main_content_center">
-        <div class="system_distribution_title">
-
-        </div>
         <div class="system_distribution_map">
           <system-distribution-map></system-distribution-map>
         </div>
@@ -38,7 +37,9 @@
         <div class="block_bg grow_for">
           <display-map></display-map>
         </div>
-        <div class="block_bg order_stat"></div>
+        <div class="block_bg order_stat">
+          <order-stat></order-stat>
+        </div>
         <div class="block_bg error_log">
           <log-list :error="true" :title="errorTitle" :subtitle="errorSubtitle"></log-list>
         </div>
@@ -48,22 +49,26 @@
 </template>
 
 <script>
+import ProductSell from "@/components/ProductSell.vue";
 import SystemDistributionMap from "@/components/SystemDistributionMap.vue";
 import SystemCallNumberMap from "@/components/SystemCallNumberMap.vue";
 import SystemHealth from "@/components/SystemHealth.vue";
 import SystemList from "@/components/SystemList.vue";
 import LogList from "@/components/LogList.vue";
 import DisplayMap from "@/components/DisplayMap.vue";
+import OrderStat from "@/components/OrderAndStat.vue";
 
 export default {
   name: "Mainview",
   components: {
+    ProductSell,
     SystemDistributionMap,
     SystemCallNumberMap,
     SystemHealth,
     SystemList,
     LogList,
-    DisplayMap
+    DisplayMap,
+    OrderStat
   },
   methods: {},
   created() { },
@@ -167,14 +172,9 @@ export default {
       width: 40%;
       height: 100%;
 
-      .system_distribution_title {
-        width: 100%;
-        height: 10%;
-      }
-
       .system_distribution_map {
         width: 100%;
-        height: 60%;
+        height: 70%;
       }
 
       .system_call_number {
