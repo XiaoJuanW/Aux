@@ -1,15 +1,15 @@
 <template>
   <!-- 日志 -->
-  <div class="log_box">
-    <div>{{title}}</div>
-    <div>{{subtitle}}</div>
-    <div class="log_wrapper">
+  <div class="log_wrapper">
+    <div class="title">{{title}}</div>
+    <div class="subtitle">{{subtitle}}</div>
+    <div class="log_box">
       <div class="log_container">
         <div class="log_content" v-for="(item, index) in list">
           <div class="index_content">{{index + 1}}</div>
           <div class="log_wrap">
             <span class="time">{{item.time}}</span>
-            <div class="log">{{item.log}}</div>
+            <div :class="error ? 'error log' : 'log'">{{item.log}}</div>
           </div>
         </div>
       </div>
@@ -26,8 +26,8 @@ export default {
     subtitle: {
       type: String,
     },
-    logColor: {
-      type: String,
+    error: {
+      type: Boolean,
     }
   },
   data() {
@@ -71,12 +71,24 @@ export default {
 };
 </script>
 <style scope lang="stylus">
-.log_box {
+.log_wrapper {
   width: 100%;
   height: 100%;
   overflow: hidden;
 
-  .log_wrapper {
+  .title {
+    font-size: 14px;
+    color: #ddd;
+    text-align: right;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    color: #998e00;
+    text-align: right;
+  }
+
+  .log_box {
     width: 100%;
     height: calc(100% - 32px);
     overflow-y: hidden;
@@ -112,11 +124,15 @@ export default {
 
           .log {
             width: calc(100% - 30px);
-            color: rgb(169, 125, 49);
+            color: green;
             font-size: 12px;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+          }
+
+          .error {
+            color: yellow;
           }
         }
       }

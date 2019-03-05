@@ -17,7 +17,7 @@
       <div class="main_content_left">
         <div class="block_bg pruduct_sell"></div>
         <div class="block_bg normal_log">
-          <log-list :title="normalTitle" :subtitle="normalSubtitle"></log-list>
+          <log-list :error="false" :title="normalTitle" :subtitle="normalSubtitle"></log-list>
         </div>
         <div class="systematic_health">
           <system-health></system-health>
@@ -40,7 +40,7 @@
         </div>
         <div class="block_bg order_stat"></div>
         <div class="block_bg error_log">
-          <log-list :title="errorTitle" :subtitle="errorSubtitle"></log-list>
+          <log-list :error="true" :title="errorTitle" :subtitle="errorSubtitle"></log-list>
         </div>
       </div>
     </div>
