@@ -16,7 +16,7 @@
     <div class="main_content">
       <div class="main_content_left">
         <div class="block_bg pruduct_sell">
-          <product-sell></product-sell>
+          <interface-call></interface-call>
         </div>
         <div class="block_bg normal_log">
           <log-list :error="false" :title="normalTitle" :subtitle="normalSubtitle"></log-list>
@@ -35,7 +35,7 @@
       </div>
       <div class="main_content_right">
         <div class="block_bg grow_for">
-          <display-map></display-map>
+          <data-trans></data-trans>
         </div>
         <div class="block_bg order_stat">
           <order-stat></order-stat>
@@ -49,23 +49,23 @@
 </template>
 
 <script>
-import ProductSell from "@/components/ProductSell.vue";
+import InterfaceCall from "@/components/InterfaceCall.vue";
 import LogList from "@/components/LogList.vue";
 import SystemHealth from "@/components/SystemHealth.vue";
 import SystemDistributionMap from "@/components/SystemDistributionMap.vue";
 import SystemCallNumberMap from "@/components/SystemCallNumberMap.vue";
-import DisplayMap from "@/components/DisplayMap.vue";
+import DataTrans from "@/components/DataTrans.vue";
 import OrderStat from "@/components/OrderAndStat.vue";
 
 export default {
   name: "Mainview",
   components: {
-    ProductSell,
+    InterfaceCall,
     SystemDistributionMap,
     SystemCallNumberMap,
     SystemHealth,
     LogList,
-    DisplayMap,
+    DataTrans,
     OrderStat
   },
   methods: {},
@@ -206,7 +206,7 @@ export default {
   background-size: 100% calc(100% - 20px);
   background-position: 0 10px;
   background-repeat: no-repeat;
-  padding: 20px 5px;
+  padding: 20px 15px;
   box-sizing: border-box;
 }
 </style>

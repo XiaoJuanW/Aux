@@ -17,7 +17,7 @@ export default {
         },
       },
       textStyle: {
-        color: "#3b6ade"
+        color: "#4574da"
       },
       tooltip: {
         trigger: 'axis',
@@ -28,22 +28,13 @@ export default {
           }
         }
       },
-      // legend: {
-      //   data: ['调用次数', '异常比'],
-      //   textStyle: {
-      //     color: "#fff"
-      //   }
-      // },
       xAxis: [
         {
           type: 'category',
           data: ['a系统', 'b系统', 'c系统', 'd系统', 'd系统', 'e系统', 'f系统', 'g系统', 'h系统', 'i系统', 'j系统', 'k系统'],
-          axisPointer: {
-            type: 'shadow'
-          },
           axisLine: {
             lineStyle: {
-              color: "#3b6ade"
+              color: "#4574da"
             }
           },
         }
@@ -57,7 +48,7 @@ export default {
           interval: 100,
           axisLine: {
             lineStyle: {
-              color: "#3b6ade"
+              color: "#4574da"
             }
           },
           splitLine: {
@@ -72,7 +63,7 @@ export default {
           interval: 5,
           axisLine: {
             lineStyle: {
-              color: "#3b6ade"
+              color: "#4574da"
             }
           },
           splitLine: {
@@ -112,7 +103,7 @@ export default {
               }
             }
           },
-          data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+          data: [2, 2, 3, 4, 6, 10, 20, 23, 23, 16, 12, 6]
         }
       ]
     };

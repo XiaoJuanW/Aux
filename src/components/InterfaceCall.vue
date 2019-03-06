@@ -1,6 +1,6 @@
 <template>
   <!-- 接口调用情况 -->
-  <div id="product-sell-wrapper">
+  <div id="interface-call-wrapper">
     <div>
       <div class="title">接口调用情况</div>
       <div class="subtitle">product sell</div>
@@ -47,7 +47,7 @@
 </template>
 <script>
 export default {
-  name: "ProductSell",
+  name: "InterfaceCall",
   data() {
     return {
       yearData: ['A接口调用1000次', 'B接口调用900次', 'C接口调用800次', 'D接口调用700次', 'E接口调用600次', 'F接口调用500次', 'F接口调用500次', 'F接口调用500次'],
@@ -71,7 +71,7 @@ export default {
 }
 </script>
 <style lang="stylus">
-#product-sell-wrapper {
+#interface-call-wrapper {
   width: 100%;
   height: 100%;
 

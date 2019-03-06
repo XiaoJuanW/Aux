@@ -1,12 +1,13 @@
 <template>
-  <div id="echart"></div>
+  <!-- 数据传输分析 -->
+  <div id="data-trans"></div>
 </template>
 <script>
 import echarts from "echarts";
 export default {
-  name: "DisplayMap",
+  name: "DataTrans",
   mounted() {
-    let myChart = echarts.init(document.getElementById("echart"));
+    let myChart = echarts.init(document.getElementById("data-trans"));
     let option = {
       title: {
         text: '数据传输分析',
@@ -14,26 +15,29 @@ export default {
         left: 'right',
         textStyle: {
           color: '#ddd',
-          fontSize: 14
+          fontSize: 14,
         },
         subtextStyle: {
           color: '#998e00'
         }
       },
       tooltip: {
-        trigger: "axis"
+        trigger: 'axis'
       },
       legend: {
         bottom: 0,
-        data: ["并发流量", "实时流量"],
-        textStyle: {
-          color: "#fff"
-        }
-      },
-      toolbox: {
-        feature: {
-          // saveAsImage: {}
-        }
+        data: [{
+          name: "并发流量",
+          textStyle: {
+            color: '#ddd'
+          }
+        },
+        {
+          name: "实时流量",
+          textStyle: {
+            color: '#ddd'
+          }
+        }]
       },
       xAxis: {
         type: "category",
@@ -41,23 +45,15 @@ export default {
         data: ["1点", "2点", "3点", "4点", "5点", "6点", "7点"],
         axisLine: {
           lineStyle: {
-            color: "#3b6ade" // 颜色
-            //width: 2 // 粗细
+            color: "#4574da",// 颜色
           }
-        },
-        // splitLine: {
-        //   lineStyle: {
-        //     // 使用深浅的间隔色
-        //     color: ['#aaa', '#ddd']
-        //   }
-        // }
+        }
       },
       yAxis: {
         type: "value",
         axisLine: {
           lineStyle: {
-            color: "#3b6ade" // 颜色
-            //width: 2 // 粗细
+            color: "#4574da" 
           }
         },
         splitLine: {
@@ -66,15 +62,19 @@ export default {
       },
       series: [
         {
-          name: "服务调用总数",
+          name: "并发流量",
           type: "line",
-          stack: "总量",
+          // lineStyle: {
+          //   color: '#ff0000',
+          // },
           data: [120, 132, 101, 134, 90, 230, 210]
         },
         {
-          name: "传输成功总数",
+          name: "实时流量",
           type: "line",
-          stack: "总量",
+          // lineStyle: {
+          //   color: '#008000',
+          // },
           data: [220, 182, 191, 234, 290, 330, 310]
         }
       ]
@@ -93,7 +93,7 @@ export default {
 };
 </script>
 <style lang="stylus">
-#echart {
+#data-trans {
   width: 100%;
   height: 100%;
 }
