@@ -1,4 +1,5 @@
 <template>
+  <!-- 系统健康度 -->
   <div id="system-health"></div>
 </template>
 <script>
@@ -9,13 +10,13 @@ export default {
     let myChart = echarts.init(document.getElementById("system-health"));
 
     let data = [
-      ["a系统", 76.9, 113760489],
-      ["b系统", 78.5, 111389562],
-      ["c系统", 80.8, 15503457],
-      ["e系统", 81.9, 164395345],
-      ["f系统", 76.9, 113768943],
-      ["g系统", 78.5, 11389562],
-      ["h系统", 80.8, 15503457],
+      ["a系统", 90.9],
+      ["b系统", 78.5],
+      ["c系统", 60.8],
+      ["e系统", 31.9],
+      ["f系统", 50.9],
+      ["g系统", 38.5],
+      ["h系统", 100],
     ];
 
     let option = {
@@ -32,10 +33,7 @@ export default {
         }
       },
       tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'cross'
-        }
+        trigger: 'axis'
       },
       xAxis: {
         axisLine: {
@@ -60,30 +58,22 @@ export default {
         name: '健康度',
         type: 'scatter',
         symbolSize: function (data) {
-          return Math.sqrt(data[2]) / 5e2;
+          let size = Math.sqrt(data[1]) * 2;
+          return size;
         },
         label: {
           emphasis: {
             show: true,
-            formatter: function (param) {
-              return param.data[3];
-            },
-            position: 'top'
           }
         },
         itemStyle: {
-          normal: {
-            shadowBlur: 10,
-            shadowColor: 'rgba(25, 100, 150, 0.5)',
-            shadowOffsetY: 5,
-            color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
-              offset: 0,
-              color: 'rgb(7, 227, 238)'
-            }, {
-              offset: 1,
-              color: 'rgb(25, 183, 207)'
-            }])
-          }
+          color: function (data) {
+            if (data.value[1] > 60) {
+              return '#57bf57';
+            } else {
+              return '#ca4646';
+            }
+          },
         },
         data: data
       }]
