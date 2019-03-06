@@ -1,17 +1,7 @@
 <template>
   <div class="main_container">
-    <div class="top_nav">
-      <div class="nav_left">
-        <span class="nav_left_letter">AUX 奥克斯</span>
-      </div>
-      <div class="nav_center">
-        <div class="nav_center_title">AUX系统地图</div>
-        <span class="nav_center_date">2019年2月23日 星期三</span>
-        <span class="nav_center_time">04:04:34</span>
-      </div>
-      <div class="nav_right">
-        <div class="nav_right_days">已监控多少天：98天</div>
-      </div>
+    <div class="nav_container">
+      <navi-bar></navi-bar>
     </div>
     <div class="main_content">
       <div class="main_content_left">
@@ -49,6 +39,7 @@
 </template>
 
 <script>
+import NaviBar from "@/components/NaviBar.vue";
 import InterfaceCall from "@/components/InterfaceCall.vue";
 import LogList from "@/components/LogList.vue";
 import SystemHealth from "@/components/SystemHealth.vue";
@@ -60,6 +51,7 @@ import OrderStat from "@/components/OrderAndStat.vue";
 export default {
   name: "Mainview",
   components: {
+    NaviBar,
     InterfaceCall,
     SystemDistributionMap,
     SystemCallNumberMap,
@@ -96,51 +88,13 @@ export default {
   display: flex;
   color: white;
 
-  .top_nav {
-    display: flex;
+  .nav_container {
     position: absolute;
     left: 20px;
     right: 20px;
     top: 0;
     height: 60px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-
-    .nav_left {
-      width: 25%;
-      text-align: left;
-
-      .nav_left_letter {
-        line-height: 60px;
-        font-size: 30px;
-        font-weight: 800;
-      }
-    }
-
-    .nav_center {
-      width: 50%;
-
-      .nav_center_title {
-        font-size: 25px;
-        margin: 9px auto;
-      }
-
-      .nav_center_time {
-        color: rgb(232, 102, 43);
-      }
-    }
-
-    .nav_right {
-      position: relative;
-      width: 25%;
-      text-align: right;
-
-      .nav_right_days {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        color: rgb(232, 102, 43);
-      }
-    }
   }
 
   .main_content {
