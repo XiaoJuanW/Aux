@@ -12,6 +12,8 @@ export default {
 
 <style>
 @import url('/css/reset.styl');
+@import url('/css/common.css');
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

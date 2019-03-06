@@ -1,42 +1,43 @@
 <template>
-  <div class="product_sell_wrapper">
-    <div class="title_box">
+  <!-- 接口调用情况 -->
+  <div id="product-sell-wrapper">
+    <div>
       <div class="title">接口调用情况</div>
       <div class="subtitle">product sell</div>
     </div>
-    <div class="colum_title_box">
-      <div class="colum_title">年度</div>
-      <div class="colum_title">本月</div>
-      <div class="colum_title">本周</div>
+    <div class="column_title_box">
+      <div class="column_title">年度(次)</div>
+      <div class="column_title">本月(次)</div>
+      <div class="column_title">本周(次)</div>
     </div>
-    <div class="call_num_order">接口调用次数排名</div>
+    <div class="content_title">接口调用次数排名</div>
     <div class="call_num_box">
-      <div class="call_num_colum">
-        <div class="call_num_container">
-          <div class="call_num_content" v-for="(item, index) in yearData">
-            <div class="index_call_num">{{index + 1}}</div>
-            <div class="call_num_text" :title="item">{{item}}</div>
+      <div class="call_num_column">
+        <div class="scroll_container">
+          <div class="scroll_content" v-for="(item, index) in yearData">
+            <div class="content_index">{{index + 1}}</div>
+            <div class="content_info" :title="item">{{item}}</div>
           </div>
         </div>
       </div>
-      <div class="call_num_colum">
-        <div class="call_num_container">
-          <div class="call_num_content" v-for="(item, index) in monthData">
-            <div class="index_call_num">{{index + 1}}</div>
-            <div class="call_num_text" :title="item">{{item}}</div>
+      <div class="call_num_column">
+        <div class="scroll_container">
+          <div class="scroll_content" v-for="(item, index) in monthData">
+            <div class="content_index">{{index + 1}}</div>
+            <div class="content_info" :title="item">{{item}}</div>
           </div>
         </div>
       </div>
-      <div class="call_num_colum">
-        <div class="call_num_container">
-          <div class="call_num_content" v-for="(item, index) in weekData">
-            <div class="index_call_num">{{index + 1}}</div>
-            <div class="call_num_text" :title="item">{{item}}</div>
+      <div class="call_num_column">
+        <div class="scroll_container">
+          <div class="scroll_content" v-for="(item, index) in weekData">
+            <div class="content_index">{{index + 1}}</div>
+            <div class="content_info" :title="item">{{item}}</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="call_num_order">系统调用排名</div>
+    <div class="content_title">系统调用排名</div>
     <div class="system_call_box">
       <div class="system_call">1.OA</div>
       <div class="system_call">2.FSCC</div>
@@ -57,9 +58,9 @@ export default {
   mounted() {
     this.$nextTick(() => {
       // 获取每一条log的高度，计算每一次移动距离
-      let logHeight = $(this.$el).find('.call_num_container').children(':first')[0].offsetHeight;
+      let logHeight = $(this.$el).find('.scroll_container').children(':first')[0].offsetHeight;
       this.timer = setInterval(() => {
-        $(this.$el).find('.call_num_container').animate({
+        $(this.$el).find('.scroll_container').animate({
           marginTop: '-' + logHeight + 'px'
         }, 1000, function () {
           $(this).css({ marginTop: "0" }).find(":first").appendTo(this);
@@ -70,79 +71,43 @@ export default {
 }
 </script>
 <style lang="stylus">
-.product_sell_wrapper {
+#product-sell-wrapper {
   width: 100%;
   height: 100%;
 
-  .title_box {
-    .title {
-      font-size: 14px;
-      color: #ddd;
-      text-align: right;
-    }
-
-    .subtitle {
-      font-size: 12px;
-      color: #998e00;
-      text-align: right;
-    }
-  }
-
-  .colum_title_box {
+  .column_title_box {
     display: flex;
-    margin-top: 5px;
+    margin: 5px 0;
     font-size: 12px;
 
-    .colum_title {
+    .column_title {
       color: #e8662b;
       flex: 1;
     }
   }
 
-  .call_num_order {
-    margin-top: 5px;
-    text-align: left;
-    font-size: 12px;
-  }
-
   .call_num_box {
     display: flex;
     font-size: 12px;
-    height: calc(100% - 100px);
+    height: calc(100% - 120px);
 
-    .call_num_colum {
+    .call_num_column {
       flex: 1;
       margin: 2px 5px;
       height: 100%;
       overflow-y: hidden;
 
-      .call_num_container {
-        overflow-y: hidden;
-
-        .call_num_content {
-          display: flex;
+      .scroll_container {
+        .content_info {
+          margin-left: 5px;
+          width: calc(100% - 23px);
           height: 20px;
-          // margin-bottom 5px;
-          // background-color: rgba(4, 49, 98, 0.6);
-
-          .index_call_num {
-            width: 18px;
-            height: 18px;
-            line-height: 18px;
-            margin: auto;
-            border-radius: 9px;
-            background-color: cyan;
-          }
-
-          .call_num_text {
-            width: calc(100% - 23px);
-            height: 20px;
-            line-height: 20px;
-            text-align: left;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-          }
+          line-height: 20px;
+          text-align: left;
+          color: #ddd;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
         }
       }
     }
@@ -153,7 +118,7 @@ export default {
 
     .system_call {
       flex: 1;
-      margin: 10px;
+      margin: 0 10px;
       font-size: 12px;
       color: yellow;
       background-color: rgba(4, 49, 98, 0.6);

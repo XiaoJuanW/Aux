@@ -1,0 +1,35 @@
+.title {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  color: #ddd;
+}
+
+.subtitle {
+  margin-top: 5px;
+  font-size: 12px;
+  text-align: right;
+  color: #998e00;
+}
+
+.content_title {
+  margin: 8px 0;
+  text-align: left;
+  font-size: 12px;
+  color: #ddd;
+}
+
+.scroll_content {
+  display: flex;
+  height: 20px;
+  padding-bottom: 3px;
+}
+
+.content_index {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  margin: auto 0;
+  border-radius: 10px;
+  background-color: #4de2e2;
+}

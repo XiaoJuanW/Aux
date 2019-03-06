@@ -50,11 +50,10 @@
 
 <script>
 import ProductSell from "@/components/ProductSell.vue";
+import LogList from "@/components/LogList.vue";
+import SystemHealth from "@/components/SystemHealth.vue";
 import SystemDistributionMap from "@/components/SystemDistributionMap.vue";
 import SystemCallNumberMap from "@/components/SystemCallNumberMap.vue";
-import SystemHealth from "@/components/SystemHealth.vue";
-import SystemList from "@/components/SystemList.vue";
-import LogList from "@/components/LogList.vue";
 import DisplayMap from "@/components/DisplayMap.vue";
 import OrderStat from "@/components/OrderAndStat.vue";
 
@@ -65,7 +64,6 @@ export default {
     SystemDistributionMap,
     SystemCallNumberMap,
     SystemHealth,
-    SystemList,
     LogList,
     DisplayMap,
     OrderStat

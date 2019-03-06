@@ -1,15 +1,17 @@
 <template>
   <!-- 日志 -->
-  <div class="log_wrapper">
-    <div class="title">{{title}}</div>
-    <div class="subtitle">{{subtitle}}</div>
+  <div id="log-wrapper">
+    <div>
+      <div class="title">{{title}}</div>
+      <div class="subtitle">{{subtitle}}</div>
+    </div>
     <div class="log_box">
       <div class="log_container">
         <div class="log_content" v-for="(item, index) in list">
-          <div class="index_content">{{index + 1}}</div>
+          <div class="log_index">{{index + 1}}</div>
           <div class="log_wrap">
-            <span class="time">{{item.time}}</span>
-            <div :class="error ? 'error log' : 'log'">{{item.log}}</div>
+            <span class="log_time">{{item.time}}</span>
+            <div :class="error ? 'error log_info' : 'log_info'">{{item.log}}</div>
           </div>
         </div>
       </div>
@@ -71,22 +73,9 @@ export default {
 };
 </script>
 <style scope lang="stylus">
-.log_wrapper {
+#log-wrapper {
   width: 100%;
   height: 100%;
-  overflow: hidden;
-
-  .title {
-    font-size: 14px;
-    color: #ddd;
-    text-align: right;
-  }
-
-  .subtitle {
-    font-size: 12px;
-    color: #998e00;
-    text-align: right;
-  }
 
   .log_box {
     width: 100%;
@@ -94,19 +83,16 @@ export default {
     overflow-y: hidden;
 
     .log_container {
-      overflow-y: hidden;
-
       .log_content {
-        position: relative;
         display: flex;
         padding-bottom: 3px;
 
-        .index_content {
-          width: 30px;
-          height: 30px;
-          line-height: 30px;
+        .log_index {
+          width: 24px;
+          height: 24px;
+          line-height: 24px;
           border-radius: 5px;
-          background-color: rgb(110, 208, 205);
+          background-color: #4de2e2;
           font-size: 10px;
           margin: auto;
         }
@@ -116,13 +102,13 @@ export default {
           width: calc(100% - 30px);
           text-align: left;
 
-          .time {
+          .log_time {
             font-size: 10px;
             color: #ddd;
             text-align: left;
           }
 
-          .log {
+          .log_info {
             width: calc(100% - 30px);
             color: green;
             font-size: 12px;
